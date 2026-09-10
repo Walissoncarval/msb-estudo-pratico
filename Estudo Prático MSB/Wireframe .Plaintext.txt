@@ -1,0 +1,32 @@
++-----------------------------------------------------------------------+
+|  MSB STUDY ENGINE                           [ Minha Conta ] [ Sair ]  |
++-----------------------------------------------------------------------+
+|                                                                       |
+|  [ SEU PAINEL CIRÚRGICO ]                                             |
+|                                                                       |
+|  +-------------------------+  +------------------------------------+  |
+|  | META DE EXCELÊNCIA      |  | STATUS DE PROCESSAMENTO            |  |
+|  | Média Geral: 84%        |  | 12 PDFs / 48 Subtemas Mapeados     |  |
+|  | (Alvo: > 93% por matéria)  | [ + Novo PDF / Material ]          |  |
+|  +-------------------------+  +------------------------------------+  |
+|                                                                       |
+|  ------------------------------------------------------------------   |
+|                                                                       |
+|  🎯 O QUE FAZER AGORA (Próxima Ação Recomendada)                      |
+|  +-----------------------------------------------------------------+  |
+|  | ⚠️ Ponto Crítico Identificado:                                  |  |
+|  | Matéria: Direito Administrativo                                 |  |
+|  | Subtema: Lei 14.133/21 - Modalidades de Licitação (Acerto: 52%)   |  |
+|  |                                                                 |  |
+|  | [ INICIAR SESSÃO DE REVISÃO E QUESTÕES ]                        |  |
+|  +-----------------------------------------------------------------+  |
+|                                                                       |
+|  ------------------------------------------------------------------   |
+|                                                                       |
+|  📊 MAPA DE DEFICIÊNCIAS (Diagnóstico por Matéria)                   |
+|                                                                       |
+|  • Direito Administrativo .......... [ 68% ] -> Atenção Crítica       |
+|  • Informática ..................... [ 88% ] -> Em Evolução           |
+|  • Língua Portuguesa ............... [ 94% ] -> Consolidado (Excelência) |
+|                                                                       |
++-----------------------------------------------------------------------+

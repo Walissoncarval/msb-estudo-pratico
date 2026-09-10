@@ -1,0 +1,16 @@
+MSB_Study_Engine/
+│
+├── 01_VISAO_GERAL/
+│   └── MSB_Study_Engine_Visao_Geral.pdf
+│
+├── 02_FLUXO_CENTRAL/
+│   └── MSB_Study_Engine_Fluxo_Central.pdf
+│
+├── 03_REGRAS_DE_NEGOCIO/
+│   └── MSB_Study_Engine_Regras_de_Negocio.docx
+│
+├── 04_MODELO_DE_DADOS/
+│   └── MSB_Study_Engine_Modelo_de_Dados.docx
+│
+└── 05_DECISOES_ARQUITETURAIS/
+    └── ADR_001_MSB_Study_Engine.md
