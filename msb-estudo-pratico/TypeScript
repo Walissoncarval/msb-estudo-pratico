@@ -1,0 +1,90 @@
+'use client';
+
+import React, { useState } from 'react';
+
+interface QuestaoCebraspeProps {
+  idItem: number;
+  enunciado: string;
+  gabaritoOficial: 'CERTO' | 'ERRADO';
+  fundamentacao: string;
+  analisePegadinha: string;
+  onResponder: (pontosLiquidos: number) => void;
+}
+
+export default function ModuloCebraspeMSB({
+  idItem,
+  enunciado,
+  gabaritoOficial,
+  fundamentacao,
+  analisePegadinha,
+  onResponder
+}: QuestaoCebraspeProps) {
+  const [escolha, setEscolha] = useState<'CERTO' | 'ERRADO' | null>(null);
+  const [respondido, setRespondido] = useState<boolean>(false);
+
+  const handleJulgar = (respostaAluno: 'CERTO' | 'ERRADO') => {
+    if (respondido) return;
+    setEscolha(respostaAluno);
+    setRespondido(true);
+
+    const acertou = respostaAluno === gabaritoOficial;
+    const pontos = acertou ? 1 : -1;
+    onResponder(pontos);
+  };
+
+  return (
+    <div className="w-full bg-slate-900 border border-slate-800 text-slate-100 p-6 rounded-2xl shadow-2xl font-sans space-y-6">
+      <div className="flex justify-between items-center border-b border-slate-800 pb-3">
+        <span className="text-xs font-bold text-amber-400 uppercase tracking-wider">
+          ⚖️ Módulo Especializado: CEBRASPE (Item {idItem})
+        </span>
+        <span className="text-xs px-2.5 py-1 bg-amber-950/40 text-amber-300 border border-amber-800 rounded-md font-semibold">
+          Regra: Certo (+1) / Errado (-1)[cite: 10]
+        </span>
+      </div>
+
+      <div className="bg-slate-800/60 p-5 rounded-xl border border-slate-700/60 leading-relaxed text-sm md:text-base text-slate-200">
+        <p>{enunciado}</p>
+      </div>
+
+      {!respondido ? (
+        <div className="grid grid-cols-2 gap-4">
+          <button
+            onClick={() => handleJulgar('CERTO')}
+            className="py-3.5 bg-emerald-700 hover:bg-emerald-600 text-white font-bold rounded-xl transition-all shadow-md uppercase tracking-wider text-sm"
+          >
+            CERTO
+          </button>
+          <button
+            onClick={() => handleJulgar('ERRADO')}
+            className="py-3.5 bg-red-700 hover:bg-red-600 text-white font-bold rounded-xl transition-all shadow-md uppercase tracking-wider text-sm"
+          >
+            ERRADO
+          </button>
+        </div>
+      ) : (
+        <div className="space-y-4 animate-fadeIn">
+          <div className={`p-4 rounded-xl border ${escolha === gabaritoOficial ? 'bg-emerald-950/40 border-emerald-800 text-emerald-200' : 'bg-red-950/40 border-red-800 text-red-200'}`}>
+            <div className="flex justify-between items-center">
+              <span className="font-bold text-sm">
+                {escolha === gabaritoOficial ? '✓ Item Julgado Corretamente (+1 pt)' : '✕ Item Julgado Incorretamente (-1 pt)'}
+              </span>
+              <span className="text-xs uppercase tracking-wider">Gabarito Oficial: <strong>{gabaritoOficial}</strong></span>
+            </div>
+          </div>
+
+          <div className="bg-slate-800 p-4 rounded-xl border border-slate-700 space-y-2 text-xs md:text-sm">
+            <p className="text-slate-300 leading-relaxed">
+              <strong className="text-amber-400 block mb-1">Fundamentação Legal[cite: 10]:</strong> 
+              {fundamentacao}
+            </p>
+            <p className="text-slate-300 leading-relaxed border-t border-slate-700/60 pt-2">
+              <strong className="text-amber-400 block mb-1">Análise da Pegadinha (Modo CEBRASPE)[cite: 10]:</strong> 
+              {analisePegadinha}
+            </p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

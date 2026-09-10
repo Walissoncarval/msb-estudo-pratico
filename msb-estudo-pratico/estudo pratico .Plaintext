@@ -1,0 +1,21 @@
+msb-estudo-pratico/
+├── public/
+├── src/
+│   ├── app/
+│   │   ├── api/
+│   │   │   └── processar-material/
+│   │   │       └── route.ts
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   └── components/
+│       ├── TelaUploadMSB.tsx
+│       ├── ComponenteQuestaoMSB.tsx
+│       ├── PainelDiagnosticoMSB.tsx
+│       ├── ModuloCebraspeMSB.tsx
+│       ├── RevisaoAdaptativaMSB.tsx
+│       ├── TutorMSBComponent.tsx
+│       └── BancoErrosMSB.tsx
+├── package.json
+├── tailwind.config.js
+└── tsconfig.json

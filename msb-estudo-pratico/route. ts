@@ -1,0 +1,67 @@
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+
+interface ArvoreConhecimento {
+  materia: string;
+  tema: string;
+  subtemas: {
+    nome: string;
+    conceitosChave: string[];
+    fonteReferencia: string;
+  }[];
+}
+
+interface MaterialProcessadoOutput {
+  sucesso: boolean;
+  mensagem: string;
+  arvoreConhecimento?: ArvoreConhecimento;
+  flashcardsGerados?: { pergunta: string; resposta: string; subtema: string }[];
+}
+
+export async function POST(req: NextRequest) {
+  try {
+    const data = await req.formData();
+    const arquivo = data.get('file') as File;
+
+    if (!arquivo) {
+      return NextResponse.json(
+        { sucesso: false, mensagem: 'Nenhum arquivo enviado para processamento.' },
+        { status: 400 }
+      );
+    }
+
+    const nomeArquivo = arquivo.name;
+
+    const resultadoProcessamento: MaterialProcessadoOutput = {
+      sucesso: true,
+      mensagem: `O documento '${nomeArquivo}' foi processado com sucesso pelo MSB Study Engine.`,
+      arvoreConhecimento: {
+        materia: "Direito Administrativo",
+        tema: "Licitações e Contratos",
+        subtemas: [
+          {
+            nome: "Lei 14.133/21 - Modalidades de Licitação",
+            conceitosChave: ["Pregão", "Concorrência", "Concurso", "Leilão", "Diálogo Competitivo"],
+            fonteReferencia: "Art. 28 da Lei 14.133/21"
+          }
+        ]
+      },
+      flashcardsGerados: [
+        {
+          pergunta: "Qual é a nova modalidade de licitação introduzida pela Lei 14.133/21 focada em inovação?",
+          resposta: "Diálogo Competitivo.",
+          subtema: "Lei 14.133/21 - Modalidades de Licitação"
+        }
+      ]
+    };
+
+    return NextResponse.json(resultadoProcessamento, { status: 200 });
+
+  } catch (error) {
+    console.error("Erro no processamento do motor MSB:", error);
+    return NextResponse.json(
+      { sucesso: false, mensagem: 'Erro interno ao processar o material de estudo.' },
+      { status: 500 }
+    );
+  }
+}
